@@ -74,7 +74,7 @@ def get_span_markup(text, bg = None, fg = 'black'):
 def iterate_container(widget):
     yield widget
 
-    if isinstance(widget, gtk.Container):
+    if isinstance(widget, Gtk.Container):
         for child in widget.get_children():
             for x in iterate_container(child): yield x
 
@@ -96,8 +96,8 @@ def get_combo_items(widget):
 
 
 def get_widget_str_value(widget):
-    if isinstance(widget, (gtk.SpinButton, gtk.Range)):
-        # Must come before gtk.Entry for gtk.SpinButton
+    if isinstance(widget, (Gtk.SpinButton, Gtk.Range)):
+        # Must come before Gtk.Entry for Gtk.SpinButton
 
         # Clean up float formatting
         value = '%.2f' % widget.get_value()
@@ -105,17 +105,17 @@ def get_widget_str_value(widget):
         elif value.endswith('.0'): value = value[0:-2]
         return value
 
-    elif isinstance(widget, gtk.Entry): return widget.get_text()
+    elif isinstance(widget, Gtk.Entry): return widget.get_text()
 
-    elif isinstance(widget, gtk.RadioButton):
+    elif isinstance(widget, Gtk.RadioButton):
         # TODO interpret as a number? or name?
         pass
 
-    elif isinstance(widget, gtk.ToggleButton):
+    elif isinstance(widget, Gtk.ToggleButton):
         if widget.get_active(): return 'true'
         else: return 'false'
 
-    elif isinstance(widget, gtk.ComboBox):
+    elif isinstance(widget, Gtk.ComboBoxText):
         # NOTE This does not always get the displayed text
         return widget.get_active_text()
 
@@ -127,26 +127,26 @@ def set_widget_str_value(widget, value):
     if value is None: value = ''
     value = str(value)
 
-    if isinstance(widget, (gtk.SpinButton, gtk.Range)):
-        # Must come before gtk.Entry for gtk.SpinButton
+    if isinstance(widget, (Gtk.SpinButton, Gtk.Range)):
+        # Must come before Gtk.Entry for Gtk.SpinButton
         if value == '': value = 0
         else:
             try: value = float(value)
             except: value = 0
         widget.set_value(value)
 
-    elif isinstance(widget, (gtk.Entry, gtk.Label)):
+    elif isinstance(widget, (Gtk.Entry, Gtk.Label)):
         if widget.get_text() != value: widget.set_text(value)
-    elif isinstance(widget, gtk.RadioButton): pass # Ignore for now
-    elif isinstance(widget, gtk.ToggleButton):
+    elif isinstance(widget, Gtk.RadioButton): pass # Ignore for now
+    elif isinstance(widget, Gtk.ToggleButton):
         widget.set_active(parse_bool(value))
-    elif isinstance(widget, gtk.Button):
+    elif isinstance(widget, Gtk.Button):
         # NOTE: For some reason setting Button labels causes tooltips to hide.
         # Only set when it has actually changed.
         if widget.get_label() != value:
             widget.set_label(value)
 
-    elif isinstance(widget, gtk.ComboBox):
+    elif isinstance(widget, Gtk.ComboBox):
         items = get_combo_items(widget)
         length = len(items)
         for i in range(length):
@@ -156,7 +156,7 @@ def set_widget_str_value(widget, value):
 
         print(('ERROR: Invalid value "%s"' % value))
 
-    elif isinstance(widget, gtk.ProgressBar):
+    elif isinstance(widget, Gtk.ProgressBar):
         widget.set_text(value)
 
         if value == '': value = '0'
@@ -171,16 +171,16 @@ def set_widget_str_value(widget, value):
 
 
 def set_widget_change_action(widget, action):
-    if isinstance(widget, (gtk.Editable, gtk.ComboBox)):
+    if isinstance(widget, (Gtk.Editable, Gtk.ComboBox)):
         widget.connect('changed', action)
 
-    elif isinstance(widget, gtk.Range):
+    elif isinstance(widget, Gtk.Range):
         widget.connect('value_changed', action)
 
-    elif isinstance(widget, gtk.ToggleButton):
+    elif isinstance(widget, Gtk.ToggleButton):
         widget.connect('toggled', action)
 
-    elif isinstance(widget, gtk.TreeModel):
+    elif isinstance(widget, Gtk.TreeModel):
         widget.connect('row_changed', action)
         widget.connect('row_inserted', action)
         widget.connect('row_deleted', action)
@@ -206,5 +206,5 @@ def get_home_dir():
 
 
 def get_theme_dirs():
-    return [get_home_dir() + '/themes', gtk.rc_get_theme_dir(),
+    return [get_home_dir() + '/themes', Gtk.rc_get_theme_dir(),
             '/usr/share/themes']

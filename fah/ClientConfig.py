@@ -162,7 +162,8 @@ class ClientConfig:
             self.updating = False
 
         # Reload queue list
-        for values in sorted(self.queue, lambda x, y: cmp(x['id'], y['id'])):
+        #for values in sorted(self.queue, cmp = lambda x, y: cmp(x['id'], y['id'])):
+        for values in sorted(self.queue, key=lambda x: x['id']):
             unit_id = values['unit']
             queue_id = values['id']
             status = values['state'].title()

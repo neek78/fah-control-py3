@@ -29,14 +29,8 @@ import urllib.request, urllib.parse, urllib.error
 
 import gi
 gi.require_version('Gtk', '3.0')
-from gi.repository import Gtk, Pango
+from gi.repository import Gtk, Pango, GObject, GLib
 
-
-#from gi.repository import Gtk
-#from gi.repository import GLib
-#import gi
-#gi.require_version("Gtk", "3.0")
-#from gi.repository import Pango
 import webbrowser
 import shlex
 import subprocess
@@ -232,7 +226,7 @@ class FAHControl(SingleAppServer):
 
         # Main window
         self.window = builder.get_object('window')
-        self.window.set_geometry_hints(None, 440, 256, -1, -1, 800, 512)
+        #self.window.set_geometry_hints(None, 440, 256, -1, -1, 800, 512)
         set_tree_view_font(self.window, self.mono_font)
         self.status_bar = builder.get_object('status_bar')
         self.ppd_label = builder.get_object('ppd_label')
@@ -303,7 +297,7 @@ class FAHControl(SingleAppServer):
         icon = builder.get_object('about_icon')
         icon.set_from_pixbuf(get_icon('medium'))
         about_version = builder.get_object('about_version')
-        about_version.set_markup('<b>Version: %s</b>' % version)
+        #about_version.set_markup('<b>Version: %s</b>' % version)
 
         # Preferences
         self.theme_list = self.load_themes()

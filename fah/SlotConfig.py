@@ -19,8 +19,10 @@
 #                                                                              #
 ################################################################################
 
-#import gtk
-# import gobject
+import gi
+from gi.repository import Gtk
+from gi.repository import GObject
+
 import copy
 
 from fah.util import parse_bool
@@ -49,7 +51,7 @@ class SlotConfig:
 
 
     def add_to_ui(self, app):
-        wrapper = gobject.GObject()
+        wrapper = GObject.GObject()
         wrapper.slot = copy.deepcopy(self)
         app.slot_list.append((self.id, self.type, wrapper))
 

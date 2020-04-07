@@ -150,7 +150,7 @@ class Connection:
                 buffer = self.socket.recv(10 * 1024 * 1024)
                 if len(buffer):
                     #if debug: print 'BUFFER:', buffer
-                    self.readBuf += buffer
+                    self.readBuf += buffer.decode()
                     bytesRead += len(buffer)
                 else:
                     if bytesRead: return bytesRead
@@ -175,7 +175,7 @@ class Connection:
         bytesWritten = 0
         try:
             while True:
-                count = self.socket.send(self.writeBuf)
+                count = self.socket.send(self.writeBuf.encode())
                 if count:
                     self.writeBuf = self.writeBuf[count:]
                     bytesWritten += count
@@ -263,7 +263,10 @@ class Connection:
                 else: raise
 
         except Exception as e:
-            print(('ERROR on connection to %s:%d: %s' % (self.address, self.port, e)))
+            traceback.print_exc(file=sys.stdout)
+
+            raise
+        #    print(('ERROR on connection to %s:%d: %s' % (self.address, self.port, e)))
 
         # Timeout connection
         if self.connected and self.last_message and \
