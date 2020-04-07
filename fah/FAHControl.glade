@@ -2863,7 +2863,7 @@ Addresses listed here also need to be listed above to allow access.</property>
                                                             <property name="visible">True</property>
                                                             <property name="can_focus">False</property>
                                                             <child>
-                                                            <object class="GtkComboBox" id="cause_option">
+                                                            <object class="GtkComboBoxText" id="cause_option">
                                                             <property name="visible">True</property>
                                                             <property name="can_focus">False</property>
                                                             <property name="model">cause_pref_list</property>
@@ -4461,7 +4461,7 @@ Some of these options may require manually restarting the client to take effect.
                         <property name="visible">True</property>
                         <property name="can_focus">False</property>
                         <child>
-                          <object class="GtkComboBox" id="viz_render_mode_pref">
+                          <object class="GtkComboBoxText" id="viz_render_mode_pref">
                             <property name="visible">True</property>
                             <property name="can_focus">False</property>
                             <property name="model">viz_render_mode_liststore</property>
@@ -4620,7 +4620,7 @@ Some of these options may require manually restarting the client to take effect.
                       </packing>
                     </child>
                     <child>
-                      <object class="GtkComboBox" id="team_stats_link_pref">
+                      <object class="GtkComboBoxText" id="team_stats_link_pref">
                         <property name="visible">True</property>
                         <property name="can_focus">False</property>
                         <property name="model">team_stats_links_list</property>
@@ -4642,7 +4642,7 @@ Some of these options may require manually restarting the client to take effect.
                       </packing>
                     </child>
                     <child>
-                      <object class="GtkComboBox" id="donor_stats_link_pref">
+                      <object class="GtkComboBoxText" id="donor_stats_link_pref">
                         <property name="visible">True</property>
                         <property name="can_focus">False</property>
                         <property name="model">donor_stats_links_list</property>
@@ -4711,7 +4711,7 @@ Some of these options may require manually restarting the client to take effect.
                       </packing>
                     </child>
                     <child>
-                      <object class="GtkComboBox" id="theme_pref">
+                      <object class="GtkComboBoxText" id="theme_pref">
                         <property name="visible">True</property>
                         <property name="can_focus">False</property>
                         <property name="model">theme_list</property>
@@ -7560,7 +7560,7 @@ Folding slots can be one of three types, Uniprocessor, SMP or GPU.  Representing
                                                       </packing>
                                                     </child>
                                                     <child>
-                                                      <object class="GtkComboBox" id="log_slot">
+                                                      <object class="GtkComboBoxText" id="log_slot">
                                                         <property name="visible">True</property>
                                                         <property name="can_focus">False</property>
                                                         <property name="model">slot_status_list</property>
@@ -7609,7 +7609,7 @@ Folding slots can be one of three types, Uniprocessor, SMP or GPU.  Representing
                                                       </packing>
                                                     </child>
                                                     <child>
-                                                      <object class="GtkComboBox" id="log_unit">
+                                                      <object class="GtkComboBoxText" id="log_unit">
                                                         <property name="visible">True</property>
                                                         <property name="can_focus">False</property>
                                                         <property name="model">queue_list</property>

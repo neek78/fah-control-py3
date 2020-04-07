@@ -263,10 +263,7 @@ class Connection:
                 else: raise
 
         except Exception as e:
-            traceback.print_exc(file=sys.stdout)
-
-            raise
-        #    print(('ERROR on connection to %s:%d: %s' % (self.address, self.port, e)))
+            print(('ERROR on connection to %s:%d: %s' % (self.address, self.port, e)))
 
         # Timeout connection
         if self.connected and self.last_message and \
