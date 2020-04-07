@@ -506,7 +506,8 @@ class ClientConfig:
 
         if len(filtered):
             text = '\n'.join(filtered)
-            text = text.decode('utf-8', 'ignore')
+            # this is redundant right? strings are always utf-8 in python 3
+            #text = text.decode('utf-8', 'ignore')
             app.log.insert(app.log.get_end_iter(), text + '\n')
             self.scroll_log_to_end(app)
 
