@@ -20,9 +20,11 @@
 ################################################################################
 
 import sys
-#import gtk
 import traceback
 import re
+
+import gi
+from gi.repository import Gtk
 
 from fah.util import parse_bool
 from fah.util import status_to_color
@@ -298,12 +300,12 @@ class ClientConfig:
         for child in port.get_children(): port.remove(child)
 
         # Alignment
-        align = gtk.Alignment(0, 0, 1, 1)
+        align = Gtk.Alignment.new(0, 0, 1, 1)
         align.set_padding(4, 4, 4, 4)
         port.add(align)
 
         # Vertical box
-        vbox = gtk.VBox()
+        vbox = Gtk.VBox()
         align.add(vbox)
 
         for category in self.info:
@@ -311,40 +313,41 @@ class ClientConfig:
             category = category[1:]
 
             # Frame
-            frame = gtk.Frame('<b>%s</b>' % name)
-            frame.set_shadow_type(gtk.SHADOW_ETCHED_IN)
+            s =  ('<b>%s</b>' % name)
+            frame = Gtk.Frame(label=s)
+            frame.set_shadow_type(Gtk.ShadowType.ETCHED_IN)
             frame.get_label_widget().set_use_markup(True)
-            vbox.pack_start(frame, False)
+            vbox.pack_start(frame, False, False, 0)
 
             # Alignment
-            align = gtk.Alignment(0, 0, 1, 1)
+            align = Gtk.Alignment.new(0, 0, 1, 1)
             align.set_padding(0, 0, 12, 0)
             frame.add(align)
 
             # Table
-            table = gtk.Table(len(category), 2)
+            table = Gtk.Table(len(category), 2)
             table.set_col_spacing(0, 5)
             align.add(table)
 
             row = 0
             for name, value in category:
                 # Name
-                label = gtk.Label('<b>%s</b>' % name)
+                label = Gtk.Label(label='<b>%s</b>' % name)
                 label.set_use_markup(True)
                 label.set_alignment(1, 0.5)
-                table.attach(label, 0, 1, row, row + 1, gtk.FILL, gtk.FILL)
+                table.attach(label, 0, 1, row, row + 1, Gtk.AttachOptions.FILL, Gtk.AttachOptions.FILL)
 
                 # Value
                 if value.startswith('http://'):
-                    label = gtk.LinkButton(value, value)
-                    label.set_relief(gtk.RELIEF_NONE)
+                    label = Gtk.LinkButton(value, value)
+                    label.set_relief(Gtk.ReliefStyle.NONE)
                     label.set_property('can-focus', False)
 
-                else: label = gtk.Label(value)
+                else: label = Gtk.Label(label=value)
 
                 label.set_alignment(0, 0.5)
                 label.modify_font(app.mono_font)
-                table.attach(label, 1, 2, row, row + 1, yoptions = gtk.FILL)
+                table.attach(label, 1, 2, row, row + 1, yoptions = Gtk.AttachOptions.FILL)
 
                 row += 1
 
