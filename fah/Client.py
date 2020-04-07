@@ -24,7 +24,7 @@ import time
 import re
 import copy
 import collections
-import gtk
+#import gtk
 import subprocess
 import time
 import sys

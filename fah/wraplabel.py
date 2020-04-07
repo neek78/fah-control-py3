@@ -19,12 +19,13 @@
 #                                                                              #
 ################################################################################
 
-import gtk
-import gobject
-import pango
+#import gtk
+#import gobject
 
+import gi
+from gi.repository import Gtk, Pango
 
-class WrapLabel(gtk.Label):
+class WrapLabel(Gtk.Label):
     __gtype_name__ = 'WrapLabel'
 
     def __init__(self, str = None):

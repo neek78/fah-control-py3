@@ -19,8 +19,8 @@
 #                                                                              #
 ################################################################################
 
-import gtk
-import gobject
+#import gtk
+# import gobject
 import copy
 
 from fah.util import parse_bool

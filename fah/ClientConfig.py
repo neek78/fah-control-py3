@@ -20,7 +20,7 @@
 ################################################################################
 
 import sys
-import gtk
+#import gtk
 import traceback
 import re
 

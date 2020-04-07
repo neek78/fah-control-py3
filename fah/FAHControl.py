@@ -26,11 +26,17 @@ import traceback
 import platform
 import urllib.request, urllib.parse, urllib.error
 
-import gtk
-import glib
-import pygtk
-pygtk.require("2.0")
-import pango
+
+import gi
+from gi.repository import Gtk, Pango
+
+gi.require_version('Gtk', '3.0')
+
+#import gtk
+#import glib
+#import pygtk
+#pygtk.require("2.0")
+#import pango
 import webbrowser
 import shlex
 import subprocess

@@ -23,7 +23,10 @@
 # fah.util
 import sys
 import os
-import gtk
+
+import gi
+gi.require_version('Gtk', '3.0')
+from gi.repository import Gtk
 
 from .SingleApp import *
 from .EntryValidator import *

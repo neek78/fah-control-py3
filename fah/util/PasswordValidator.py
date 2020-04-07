@@ -20,7 +20,7 @@
 ################################################################################
 
 
-import gtk
+#import gtk
 
 from fah.util.EntryValidator import EntryValidator
 

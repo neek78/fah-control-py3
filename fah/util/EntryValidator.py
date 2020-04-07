@@ -19,7 +19,7 @@
 #                                                                              #
 ################################################################################
 
-import gtk
+#import gtk
 import re
 
 class EntryValidator:
