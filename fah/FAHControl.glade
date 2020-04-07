@@ -1,4 +1,4 @@
-<?xml version="1.0" encoding="UTF-8"?>
+ERROR: Failed to load UI file: <?xml version="1.0" encoding="UTF-8"?>
 <interface>
   <requires lib="gtk+" version="2.16"/>
   <!-- interface-naming-policy project-wide -->
@@ -90,7 +90,7 @@
           </packing>
         </child>
         <child>
-          <object class="GtkLabel" id="wlabel33">
+          <object class="WrapLabel" id="wlabel33">
             <property name="width_request">1</property>
             <property name="visible">True</property>
             <property name="can_focus">False</property>
@@ -676,7 +676,7 @@ Would you like to configure your identity now?</property>
                                                 <property name="visible">True</property>
                                                 <property name="can_focus">False</property>
                                                 <child>
-                                                  <object class="GtkLabel" id="wlabel6">
+                                                  <object class="WrapLabel" id="wlabel6">
                                                     <property name="width_request">10</property>
                                                     <property name="visible">True</property>
                                                     <property name="can_focus">False</property>
@@ -706,7 +706,7 @@ Would you like to configure your identity now?</property>
                                                             <property name="visible">True</property>
                                                             <property name="can_focus">False</property>
                                                             <child>
-                                                            <object class="GtkLabel" id="wlabel7">
+                                                            <object class="WrapLabel" id="wlabel7">
                                                             <property name="width_request">1</property>
                                                             <property name="visible">True</property>
                                                             <property name="can_focus">False</property>
@@ -770,7 +770,7 @@ Would you like to configure your identity now?</property>
                                                             <property name="visible">True</property>
                                                             <property name="can_focus">False</property>
                                                             <child>
-                                                            <object class="GtkLabel" id="wlabel8">
+                                                            <object class="WrapLabel" id="wlabel8">
                                                             <property name="width_request">1</property>
                                                             <property name="visible">True</property>
                                                             <property name="can_focus">False</property>
@@ -826,7 +826,7 @@ Would you like to configure your identity now?</property>
                                                             </packing>
                                                             </child>
                                                             <child>
-                                                            <object class="GtkLabel" id="wlabel9">
+                                                            <object class="WrapLabel" id="wlabel9">
                                                             <property name="width_request">1</property>
                                                             <property name="visible">True</property>
                                                             <property name="can_focus">False</property>
@@ -917,7 +917,7 @@ Would you like to configure your identity now?</property>
                                                             <property name="visible">True</property>
                                                             <property name="can_focus">False</property>
                                                             <child>
-                                                            <object class="GtkLabel" id="wlabel10">
+                                                            <object class="WrapLabel" id="wlabel10">
                                                             <property name="width_request">1</property>
                                                             <property name="visible">True</property>
                                                             <property name="can_focus">False</property>
@@ -1049,7 +1049,7 @@ Would you like to configure your identity now?</property>
                                                             <property name="visible">True</property>
                                                             <property name="can_focus">False</property>
                                                             <child>
-                                                            <object class="GtkLabel" id="wlabel12">
+                                                            <object class="WrapLabel" id="wlabel12">
                                                             <property name="width_request">1</property>
                                                             <property name="visible">True</property>
                                                             <property name="can_focus">False</property>
@@ -1128,7 +1128,7 @@ Would you like to configure your identity now?</property>
                                                             <property name="visible">True</property>
                                                             <property name="can_focus">False</property>
                                                             <child>
-                                                            <object class="GtkLabel" id="wlabel13">
+                                                            <object class="WrapLabel" id="wlabel13">
                                                             <property name="width_request">1</property>
                                                             <property name="visible">True</property>
                                                             <property name="can_focus">False</property>
@@ -1248,7 +1248,7 @@ Would you like to configure your identity now?</property>
                                                             </packing>
                                                             </child>
                                                             <child>
-                                                            <object class="GtkLabel" id="wlabel14">
+                                                            <object class="WrapLabel" id="wlabel14">
                                                             <property name="width_request">1</property>
                                                             <property name="visible">True</property>
                                                             <property name="can_focus">False</property>
@@ -1494,7 +1494,7 @@ Would you like to configure your identity now?</property>
                                                 <property name="visible">True</property>
                                                 <property name="can_focus">False</property>
                                                 <child>
-                                                  <object class="GtkLabel" id="wlabel15">
+                                                  <object class="WrapLabel" id="wlabel15">
                                                     <property name="width_request">1</property>
                                                     <property name="visible">True</property>
                                                     <property name="can_focus">False</property>
@@ -1746,7 +1746,7 @@ Folding slots can be one of two types, CPU or GPU.  Representing the different t
                                                 <property name="can_focus">False</property>
                                                 <property name="spacing">2</property>
                                                 <child>
-                                                  <object class="GtkLabel" id="wlabel16">
+                                                  <object class="WrapLabel" id="wlabel16">
                                                     <property name="width_request">1</property>
                                                     <property name="visible">True</property>
                                                     <property name="can_focus">False</property>
@@ -1782,7 +1782,7 @@ Warning, changes you make here may render your client inaccessible even from the
                                                             <property name="can_focus">False</property>
                                                             <property name="spacing">8</property>
                                                             <child>
-                                                            <object class="GtkLabel" id="wlabel17">
+                                                            <object class="WrapLabel" id="wlabel17">
                                                             <property name="width_request">1</property>
                                                             <property name="visible">True</property>
                                                             <property name="can_focus">False</property>
@@ -1962,7 +1962,7 @@ Warning, changes you make here may render your client inaccessible even from the
                                                             <property name="can_focus">False</property>
                                                             <property name="spacing">8</property>
                                                             <child>
-                                                            <object class="GtkLabel" id="wlabel18">
+                                                            <object class="WrapLabel" id="wlabel18">
                                                             <property name="width_request">1</property>
                                                             <property name="visible">True</property>
                                                             <property name="can_focus">False</property>
@@ -2050,7 +2050,7 @@ Warning, changes you make here may render your client inaccessible even from the
                                                             <property name="can_focus">False</property>
                                                             <property name="spacing">8</property>
                                                             <child>
-                                                            <object class="GtkLabel" id="wlabel19">
+                                                            <object class="WrapLabel" id="wlabel19">
                                                             <property name="width_request">1</property>
                                                             <property name="visible">True</property>
                                                             <property name="can_focus">False</property>
@@ -2191,7 +2191,7 @@ The following range specification matches all IP address:
                                                             <property name="can_focus">False</property>
                                                             <property name="spacing">8</property>
                                                             <child>
-                                                            <object class="GtkLabel" id="wlabel20">
+                                                            <object class="WrapLabel" id="wlabel20">
                                                             <property name="width_request">1</property>
                                                             <property name="visible">True</property>
                                                             <property name="can_focus">False</property>
@@ -2417,7 +2417,7 @@ Addresses listed here also need to be listed above to allow access.</property>
                                                             <property name="visible">True</property>
                                                             <property name="can_focus">False</property>
                                                             <child>
-                                                            <object class="GtkLabel" id="wlabel21">
+                                                            <object class="WrapLabel" id="wlabel21">
                                                             <property name="width_request">1</property>
                                                             <property name="visible">True</property>
                                                             <property name="can_focus">False</property>
@@ -2556,7 +2556,7 @@ Addresses listed here also need to be listed above to allow access.</property>
                                                             <property name="visible">True</property>
                                                             <property name="can_focus">False</property>
                                                             <child>
-                                                            <object class="GtkLabel" id="wlabel22">
+                                                            <object class="WrapLabel" id="wlabel22">
                                                             <property name="width_request">1</property>
                                                             <property name="visible">True</property>
                                                             <property name="can_focus">False</property>
@@ -2900,7 +2900,7 @@ Addresses listed here also need to be listed above to allow access.</property>
                                                             </packing>
                                                             </child>
                                                             <child>
-                                                            <object class="GtkLabel" id="wlabel34">
+                                                            <object class="WrapLabel" id="wlabel34">
                                                             <property name="width_request">1</property>
                                                             <property name="visible">True</property>
                                                             <property name="can_focus">False</property>
@@ -2983,7 +2983,7 @@ Addresses listed here also need to be listed above to allow access.</property>
                                                             </packing>
                                                             </child>
                                                             <child>
-                                                            <object class="GtkLabel" id="wlabel23">
+                                                            <object class="WrapLabel" id="wlabel23">
                                                             <property name="width_request">1</property>
                                                             <property name="visible">True</property>
                                                             <property name="can_focus">False</property>
@@ -2997,7 +2997,7 @@ Addresses listed here also need to be listed above to allow access.</property>
                                                             </packing>
                                                             </child>
                                                             <child>
-                                                            <object class="GtkLabel" id="wlabel24">
+                                                            <object class="WrapLabel" id="wlabel24">
                                                             <property name="width_request">1</property>
                                                             <property name="visible">True</property>
                                                             <property name="can_focus">False</property>
@@ -3063,7 +3063,7 @@ Addresses listed here also need to be listed above to allow access.</property>
                                                             </packing>
                                                             </child>
                                                             <child>
-                                                            <object class="GtkLabel" id="wlabel25">
+                                                            <object class="WrapLabel" id="wlabel25">
                                                             <property name="width_request">1</property>
                                                             <property name="visible">True</property>
                                                             <property name="can_focus">False</property>
@@ -3129,7 +3129,7 @@ Addresses listed here also need to be listed above to allow access.</property>
                                                             </packing>
                                                             </child>
                                                             <child>
-                                                            <object class="GtkLabel" id="wlabel26">
+                                                            <object class="WrapLabel" id="wlabel26">
                                                             <property name="width_request">1</property>
                                                             <property name="visible">True</property>
                                                             <property name="can_focus">False</property>
@@ -3195,7 +3195,7 @@ Addresses listed here also need to be listed above to allow access.</property>
                                                             </packing>
                                                             </child>
                                                             <child>
-                                                            <object class="GtkLabel" id="wlabel27">
+                                                            <object class="WrapLabel" id="wlabel27">
                                                             <property name="width_request">1</property>
                                                             <property name="visible">True</property>
                                                             <property name="can_focus">False</property>
@@ -3273,7 +3273,7 @@ Addresses listed here also need to be listed above to allow access.</property>
                                                             </packing>
                                                             </child>
                                                             <child>
-                                                            <object class="GtkLabel" id="wlabel28">
+                                                            <object class="WrapLabel" id="wlabel28">
                                                             <property name="width_request">100</property>
                                                             <property name="visible">True</property>
                                                             <property name="can_focus">False</property>
@@ -3287,7 +3287,7 @@ Addresses listed here also need to be listed above to allow access.</property>
                                                             </packing>
                                                             </child>
                                                             <child>
-                                                            <object class="GtkLabel" id="wlabel29">
+                                                            <object class="WrapLabel" id="wlabel29">
                                                             <property name="width_request">100</property>
                                                             <property name="visible">True</property>
                                                             <property name="can_focus">False</property>
@@ -3353,7 +3353,7 @@ Addresses listed here also need to be listed above to allow access.</property>
                                                             </packing>
                                                             </child>
                                                             <child>
-                                                            <object class="GtkLabel" id="wlabel30">
+                                                            <object class="WrapLabel" id="wlabel30">
                                                             <property name="width_request">100</property>
                                                             <property name="visible">True</property>
                                                             <property name="can_focus">False</property>
@@ -3456,7 +3456,7 @@ Addresses listed here also need to be listed above to allow access.</property>
                                                 <property name="visible">True</property>
                                                 <property name="can_focus">False</property>
                                                 <child>
-                                                  <object class="GtkLabel" id="wlabel32">
+                                                  <object class="WrapLabel" id="wlabel32">
                                                     <property name="width_request">100</property>
                                                     <property name="visible">True</property>
                                                     <property name="can_focus">False</property>
@@ -4910,7 +4910,7 @@ Some of these options may require manually restarting the client to take effect.
                                             <property name="visible">True</property>
                                             <property name="can_focus">False</property>
                                             <child>
-                                              <object class="GtkLabel" id="wlabel4">
+                                              <object class="WrapLabel" id="wlabel4">
                                                 <property name="width_request">1</property>
                                                 <property name="visible">True</property>
                                                 <property name="can_focus">False</property>
@@ -4938,7 +4938,7 @@ Some of these options may require manually restarting the client to take effect.
                                                         <property name="visible">True</property>
                                                         <property name="can_focus">False</property>
                                                         <child>
-                                                          <object class="GtkLabel" id="wlabel3">
+                                                          <object class="WrapLabel" id="wlabel3">
                                                             <property name="width_request">1</property>
                                                             <property name="visible">True</property>
                                                             <property name="can_focus">False</property>
@@ -5072,7 +5072,7 @@ Some of these options may require manually restarting the client to take effect.
                                             <property name="visible">True</property>
                                             <property name="can_focus">False</property>
                                             <child>
-                                              <object class="GtkLabel" id="wlabel1">
+                                              <object class="WrapLabel" id="wlabel1">
                                                 <property name="width_request">1</property>
                                                 <property name="visible">True</property>
                                                 <property name="can_focus">False</property>
@@ -5100,7 +5100,7 @@ Some of these options may require manually restarting the client to take effect.
                                                         <property name="visible">True</property>
                                                         <property name="can_focus">False</property>
                                                         <child>
-                                                          <object class="GtkLabel" id="wlabel2">
+                                                          <object class="WrapLabel" id="wlabel2">
                                                             <property name="width_request">1</property>
                                                             <property name="visible">True</property>
                                                             <property name="can_focus">False</property>
@@ -5200,7 +5200,7 @@ Some of these options may require manually restarting the client to take effect.
                                                         <property name="visible">True</property>
                                                         <property name="can_focus">False</property>
                                                         <child>
-                                                          <object class="GtkLabel" id="wlabel129">
+                                                          <object class="WrapLabel" id="wlabel129">
                                                             <property name="width_request">10</property>
                                                             <property name="visible">True</property>
                                                             <property name="can_focus">False</property>
@@ -7868,3 +7868,4 @@ Folding slots can be one of three types, Uniprocessor, SMP or GPU.  Representing
     </child>
   </object>
 </interface>
+
