@@ -24,7 +24,7 @@ import time
 import re
 import traceback
 import platform
-import urllib
+import urllib.request, urllib.parse, urllib.error
 
 import gtk
 import glib
@@ -34,7 +34,7 @@ import pango
 import webbrowser
 import shlex
 import subprocess
-from wraplabel import WrapLabel
+from .wraplabel import WrapLabel
 
 # OSX integration
 if sys.platform == 'darwin':
@@ -233,7 +233,7 @@ class FAHControl(SingleAppServer):
 
         # Panes
         self.panes = WidgetMap(self.window, 'paned')
-        for name, pane in self.panes.items():
+        for name, pane in list(self.panes.items()):
             prop = name + '_position'
 
             # Load current value
@@ -270,7 +270,7 @@ class FAHControl(SingleAppServer):
             'about': self.about_dialog,
             'main': self.window,
             }
-        for name, win in self.windows.items():
+        for name, win in list(self.windows.items()):
             if self.db.has(name + '_width'):
                 width = int(self.db.get(name + '_width'))
             else: width = -1
@@ -411,9 +411,9 @@ class FAHControl(SingleAppServer):
         self.donor_stats_pref = self.preference_widgets['donor_stats']
         self.team_stats_pref = self.preference_widgets['team_stats']
         self.donor_stats_list = builder.get_object('donor_stats_links_list')
-        map(self.donor_stats_list.append, self.donor_stats_links)
+        list(map(self.donor_stats_list.append, self.donor_stats_links))
         self.team_stats_list = builder.get_object('team_stats_links_list')
-        map(self.team_stats_list.append, self.team_stats_links)
+        list(map(self.team_stats_list.append, self.team_stats_links))
 
         # OSX integration
         if sys.platform == 'darwin':
@@ -606,7 +606,7 @@ class FAHControl(SingleAppServer):
         try:
             subprocess.Popen(cmd)
         except Exception as e:
-            print (e, ':', ' '.join(cmd))
+            print((e, ':', ' '.join(cmd)))
 
 
     def connect_option_cell(self, name, model, col):
@@ -638,7 +638,7 @@ class FAHControl(SingleAppServer):
         if not len(self.selected_clients): self.select_first_client()
 
         # Update clients
-        for client in self.clients.values(): client.update(self)
+        for client in list(self.clients.values()): client.update(self)
 
         # (De)activate client
         if self.active_client:
@@ -668,7 +668,7 @@ class FAHControl(SingleAppServer):
 
                 # Update ppd
                 ppd = 0
-                for client in self.clients.values(): ppd += client.ppd
+                for client in list(self.clients.values()): ppd += client.ppd
                 label = 'Total Estimated Points Per Day: '
                 if int(ppd): label += '%d' % int(ppd)
                 else: label += 'Unknown'
@@ -707,7 +707,7 @@ class FAHControl(SingleAppServer):
 
         self.set_update_timer_interval(0)
 
-        for client in self.clients.values(): client.close()
+        for client in list(self.clients.values()): client.close()
 
         try:
             self.db.flush_queued()
@@ -744,7 +744,7 @@ class FAHControl(SingleAppServer):
     def load_theme(self, theme):
         for name, rc in self.theme_list:
             if theme == name:
-                print ('Loading theme %r' % theme)
+                print(('Loading theme %r' % theme))
 
                 settings = gtk.settings_get_default()
 
@@ -829,7 +829,7 @@ class FAHControl(SingleAppServer):
 
     def preferences_load(self):
         # Preferences dialog
-        for name, widget in self.preference_widgets.items():
+        for name, widget in list(self.preference_widgets.items()):
             value = None
 
             if self.db.has(name):
@@ -856,7 +856,7 @@ class FAHControl(SingleAppServer):
 
 
     def preferences_dialog_init(self):
-        for name, widget in self.preference_widgets.items():
+        for name, widget in list(self.preference_widgets.items()):
             if self.db.has(name):
                 value = self.db.get(name)
                 set_widget_str_value(widget, value)
@@ -868,7 +868,7 @@ class FAHControl(SingleAppServer):
 
 
     def preferences_save(self):
-        for name, widget in self.preference_widgets.items():
+        for name, widget in list(self.preference_widgets.items()):
             value = get_widget_str_value(widget)
             if value is None: self.db.clear(name, False)
             else: self.db.set(name, value, False)
@@ -932,7 +932,7 @@ class FAHControl(SingleAppServer):
     def save_clients(self):
         self.db.delete('clients')
 
-        for client in self.clients.values():
+        for client in list(self.clients.values()):
             client.save(self.db)
 
         self.db.commit()
@@ -971,7 +971,7 @@ class FAHControl(SingleAppServer):
             name = client.name
             i = ibyname_old.get(name)
             if i is None:
-                print ('unable to resort client list: unknown name %s' % name)
+                print(('unable to resort client list: unknown name %s' % name))
                 return
             new_order.append(i)
         self.client_list.reorder(new_order)
@@ -980,7 +980,7 @@ class FAHControl(SingleAppServer):
 
     def sorted_clients(self, unsorted_clients = None):
         if unsorted_clients is None:
-            unsorted_clients = self.clients.values()
+            unsorted_clients = list(self.clients.values())
 
         # pre-sort by client.name
         clients = sorted(unsorted_clients, key=lambda c: c.name)
@@ -1061,7 +1061,7 @@ class FAHControl(SingleAppServer):
 
             return True
 
-        except Exception, msg:
+        except Exception as msg:
             self.set_status('Save Failed')
             self.error(msg)
             return False
@@ -1165,7 +1165,7 @@ class FAHControl(SingleAppServer):
 
     def get_selected_clients(self):
         selection = get_tree_selection(self.client_tree)
-        names = map(lambda item: self.client_list.get(item[1], 0)[0], selection)
+        names = [self.client_list.get(item[1], 0)[0] for item in selection]
         return set(map(self.clients.get, names))
 
 
@@ -1175,11 +1175,11 @@ class FAHControl(SingleAppServer):
         client.load_dialog(self)
 
         if self.active_client and self.active_client.is_online():
-            for name, widget in self.client_config_tabs.items(): widget.show()
+            for name, widget in list(self.client_config_tabs.items()): widget.show()
             self.client_dialog.config_hidden = False
 
         else:
-            for name, widget in self.client_config_tabs.items():
+            for name, widget in list(self.client_config_tabs.items()):
                 if name != 'connection': widget.hide()
             self.client_dialog.config_hidden = True
 
@@ -1197,8 +1197,7 @@ class FAHControl(SingleAppServer):
     # Slot methods
     def get_selected_slot_ids(self):
         selection = get_tree_selection(self.slot_status_tree)
-        ids = map(lambda x: int(self.slot_status_list.get(x[1], 0)[0]),
-                  selection)
+        ids = [int(self.slot_status_list.get(x[1], 0)[0]) for x in selection]
         return ids
 
 
@@ -1246,7 +1245,7 @@ class FAHControl(SingleAppServer):
 
         # log to terminal window
         if sys.exc_info()[2]: traceback.print_exc()
-        print ('ERROR: %s' % message)
+        print(('ERROR: %s' % message))
 
         # Don't open more than one
         if self.error_dialog is not None: return False
@@ -1435,7 +1434,7 @@ class FAHControl(SingleAppServer):
         if self.get_visible_dialogs(): return
 
         # Make client name
-        for i in xrange(sys.maxint):
+        for i in range(sys.maxsize):
             name = 'client%d' % i
             if not name in self.clients: break
 
@@ -1448,7 +1447,7 @@ class FAHControl(SingleAppServer):
         # Reset dialog
         self.client_entries['name'].set_sensitive(True)
         self.client_entries['address'].set_sensitive(True)
-        for name, widget in self.client_config_tabs.items():
+        for name, widget in list(self.client_config_tabs.items()):
             if name != 'connection': widget.hide()
 
         self.open_dialog(self.client_dialog)
@@ -1484,7 +1483,7 @@ class FAHControl(SingleAppServer):
         self.selected_clients = self.get_selected_clients()
 
         # Modify selection
-        for client in self.clients.values():
+        for client in list(self.clients.values()):
             client.set_selected(client in self.selected_clients)
 
         self.update_client_status()
@@ -1832,6 +1831,6 @@ class FAHControl(SingleAppServer):
 
 
     def on_uri_hook(self, widget, url, data = None):
-        keys = {'donor': urllib.quote(self.donor_info.get_label()),
-                'team': urllib.quote(self.team_info.get_label())}
+        keys = {'donor': urllib.parse.quote(self.donor_info.get_label()),
+                'team': urllib.parse.quote(self.team_info.get_label())}
         webbrowser.open(url % keys)

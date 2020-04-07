@@ -55,8 +55,8 @@ class Client:
         if not name: self.name = self.get_address()
 
         # Option names
-        names = app.client_option_widgets.keys()
-        self.option_names = map(lambda name: name.replace('_', '-'), names)
+        names = list(app.client_option_widgets.keys())
+        self.option_names = [name.replace('_', '-') for name in names]
         self.option_names.append('power') # Folding power
 
         # Init commands
@@ -205,7 +205,7 @@ class Client:
 
         cmd = 'options'
 
-        for name, value in options.items():
+        for name, value in list(options.items()):
             cmd += ' ' + name
             if name[-1] != '!':
                 cmd += "='%s'" % value.encode('string_escape')
@@ -228,7 +228,7 @@ class Client:
         # Modified
         for id, type, options in modified:
             cmd = 'slot-modify %d %s' % (id, type)
-            for name, value in options.items():
+            for name, value in list(options.items()):
                 if name[-1] == '!': cmd += ' ' + name
                 else: cmd += ' %s="%s"' % (name, value)
             self.conn.queue_command(cmd)
@@ -236,7 +236,7 @@ class Client:
         # Added
         for type, options in added:
             cmd = 'slot-add %s' % type
-            for name, value in options.items():
+            for name, value in list(options.items()):
                 cmd += ' %s="%s"' % (name, value)
             self.conn.queue_command(cmd)
 
@@ -317,7 +317,7 @@ class Client:
             app.error(msg)
 
         else:
-            print ('ERROR: %s' % msg)
+            print(('ERROR: %s' % msg))
 
         app.set_status(msg)
 
@@ -328,7 +328,7 @@ class Client:
 
     def process_message(self, app, type, data):
         if debug:
-            print ('message: %s %s' % (type, data))
+            print(('message: %s %s' % (type, data)))
 
         if type == 'heartbeat': return
         if type == 'ppd': self.process_ppd(app, data)

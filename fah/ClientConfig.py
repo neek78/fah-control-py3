@@ -41,7 +41,7 @@ def get_option_mods(old_options, new_options):
             changes[name + '!'] = None
 
     # Added and modified
-    for name, value in new_options.items():
+    for name, value in list(new_options.items()):
         if name not in old_options or value != old_options[name]:
             changes[name] = value
 
@@ -203,7 +203,7 @@ class ClientConfig:
         entry = self.queue_map[selected]
 
         # Load info
-        for name, value in entry.items():
+        for name, value in list(entry.items()):
             if name in app.queue_widgets:
                 if (name in ['basecredit', 'creditestimate', 'ppd'] and \
                         float(value) == 0) or value == '<invalid>' or \
@@ -286,7 +286,7 @@ class ClientConfig:
 
 
     def reset_work_unit_info(self, app):
-        for widget in app.queue_widgets.values():
+        for widget in list(app.queue_widgets.values()):
             set_widget_str_value(widget, None)
 
 
@@ -354,7 +354,7 @@ class ClientConfig:
     def update_options(self, app):
         used = set()
 
-        for name, widget in app.client_option_widgets.items():
+        for name, widget in list(app.client_option_widgets.items()):
             name = name.replace('_', '-')
             used.add(name)
 
@@ -362,7 +362,7 @@ class ClientConfig:
                 set_widget_str_value(widget, self.options[name])
 
             except: # Don't let one bad widget kill everything
-                print ('WARNING: failed to set widget "%s"' % name)
+                print(('WARNING: failed to set widget "%s"' % name))
 
         # Setup passkey and password entries
         app.passkey_validator.set_good()
@@ -403,7 +403,7 @@ class ClientConfig:
 
         # Remaining options
         app.option_list.clear()
-        for name, value in self.options.items():
+        for name, value in list(self.options.items()):
             if name not in used:
                 app.option_list.append([name, value])
 
@@ -489,7 +489,7 @@ class ClientConfig:
             f.append(r'FS%s' % id)
 
         if len(f):
-            f = map(lambda x: '.*(^|:)%s' % x, f)
+            f = ['.*(^|:)%s' % x for x in f]
             return '(^\*)|(%s):' % ''.join(f)
 
         return None
@@ -501,7 +501,7 @@ class ClientConfig:
 
 
     def log_add_lines(self, app, lines):
-        filtered = filter(self.log_filter, lines)
+        filtered = list(filter(self.log_filter, lines))
 
         if len(filtered):
             text = '\n'.join(filtered)
@@ -604,7 +604,7 @@ class ClientConfig:
         app.option_list.foreach(check_option, None)
 
         # Main options
-        for name, widget in app.client_option_widgets.items():
+        for name, widget in list(app.client_option_widgets.items()):
             name = name.replace('_', '-')
             if name in used: continue
             value = self.get(name)
@@ -619,7 +619,7 @@ class ClientConfig:
                     else: options[name] = value
 
             except Exception as e: # Don't let one bad widget kill everything
-                print ('WARNING: failed to save widget "%s": %s' % (name, e))
+                print(('WARNING: failed to save widget "%s": %s' % (name, e)))
 
         # Removed options
         for name in self.options:
